@@ -1,9 +1,11 @@
+
+
 const express = require('express'),
-bodyParser = require('body-parser'),
+bodyParser = require('body-parser'),  
 morgan      = require('morgan'),
 jwt    = require('jsonwebtoken'),
 config = require('./configurations/config'),
-cors = require('cors'),
+// cors = require('cors'),
 app = express(); 
 
 
@@ -11,11 +13,12 @@ app = express();
 app.set('Secret', config.secret);
 
 // cors 
-app.use(cors({credentials: true, origin: 'http://localhost:4200'}));
+// app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 
 // use morgan to log requests to the console
 app.use(morgan('dev'));
 
+//truy xuất data trong form gủi lên server 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -120,3 +123,4 @@ ProtectedRoutes.use((req, res, next) =>{
 
   }
 });
+
